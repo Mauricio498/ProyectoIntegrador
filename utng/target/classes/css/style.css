@@ -1,0 +1,701 @@
+/* ==========================================================
+   Biblioteca Digital UTNG — Hoja de estilos
+   Paleta: azul oscuro #14213D · naranja #FCA311
+   ========================================================== */
+
+* {
+    -fx-azul-oscuro: #14213D;
+    -fx-azul-oscuro-hover: #1D3461;
+    -fx-naranja: #FCA311;
+    -fx-naranja-hover: #E5940A;
+    -fx-blanco: #FFFFFF;
+    -fx-fondo-claro: #F5F7FA;
+    -fx-gris-borde: #E5E8EE;
+    -fx-gris-medio: #6B7280;
+    -fx-gris-oscuro: #1F2933;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.app-root {
+    -fx-background-color: -fx-fondo-claro;
+    -fx-font-family: -fx-font-family;
+}
+
+/* ==========================================================
+   SIDEBAR
+   ========================================================== */
+
+.sidebar {
+    -fx-background-color: -fx-azul-oscuro;
+}
+
+.sidebar-logo-icon {
+    -fx-font-size: 26px;
+}
+
+.sidebar-logo-text {
+    -fx-text-fill: white;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+}
+
+.sidebar-logo-subtext {
+    -fx-text-fill: -fx-naranja;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 1px;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #C9D1E0;
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 12 16;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: derive(-fx-blanco, -85%);
+    -fx-text-fill: white;
+}
+
+.nav-button-activo {
+    -fx-background-color: -fx-naranja;
+    -fx-text-fill: -fx-azul-oscuro;
+    -fx-font-weight: bold;
+}
+
+.nav-button-activo:hover {
+    -fx-background-color: -fx-naranja-hover;
+}
+
+.sidebar-footer {
+    -fx-text-fill: #5C6B8A;
+    -fx-font-size: 10px;
+}
+
+/* ==========================================================
+   TOP BAR
+   ========================================================== */
+
+.top-bar {
+    -fx-background-color: -fx-blanco;
+    -fx-border-color: transparent transparent -fx-gris-borde transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.top-bar-nombre {
+    -fx-text-fill: -fx-gris-oscuro;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.top-bar-rol {
+    -fx-text-fill: -fx-gris-medio;
+    -fx-font-size: 11px;
+}
+
+.avatar-circle {
+    -fx-min-width: 40; -fx-min-height: 40;
+    -fx-max-width: 40; -fx-max-height: 40;
+}
+
+.avatar-circle Circle {
+    -fx-fill: -fx-naranja;
+}
+
+.avatar-label {
+    -fx-text-fill: -fx-azul-oscuro;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+.content-area {
+    -fx-background-color: -fx-fondo-claro;
+}
+
+.screen-scroll {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.screen-scroll > .viewport {
+    -fx-background-color: transparent;
+}
+
+.screen-container {
+    -fx-background-color: -fx-fondo-claro;
+}
+
+.page-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-azul-oscuro;
+}
+
+.section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-gris-oscuro;
+}
+
+.section-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: -fx-gris-medio;
+}
+
+/* ==========================================================
+   HERO (pantalla Inicio)
+   ========================================================== */
+
+.hero-card {
+    -fx-background-color: linear-gradient(to right, #14213D, #1D3461);
+    -fx-background-radius: 20;
+    -fx-padding: 36 40;
+}
+
+.hero-title {
+    -fx-text-fill: white;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+}
+
+.hero-subtitle {
+    -fx-text-fill: #C9D1E0;
+    -fx-font-size: 14px;
+}
+
+/* ==========================================================
+   BOTONES
+   ========================================================== */
+
+.btn-primary {
+    -fx-background-color: -fx-naranja;
+    -fx-text-fill: -fx-azul-oscuro;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-radius: 10;
+    -fx-padding: 12 24;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(252,163,17,0.35), 10, 0, 0, 3);
+}
+
+.btn-primary:hover {
+    -fx-background-color: -fx-naranja-hover;
+}
+
+.btn-primary:pressed {
+    -fx-background-color: derive(-fx-naranja-hover, -10%);
+}
+
+.btn-primary:disabled {
+    -fx-background-color: -fx-gris-borde;
+    -fx-text-fill: -fx-gris-medio;
+    -fx-effect: none;
+}
+
+.btn-secondary {
+    -fx-background-color: -fx-blanco;
+    -fx-text-fill: -fx-azul-oscuro;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-radius: 10;
+    -fx-padding: 12 22;
+    -fx-border-color: -fx-azul-oscuro;
+    -fx-border-width: 1.4;
+    -fx-border-radius: 10;
+    -fx-cursor: hand;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: derive(-fx-azul-oscuro, 92%);
+}
+
+.btn-primary-sm {
+    -fx-background-color: -fx-naranja;
+    -fx-text-fill: -fx-azul-oscuro;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-background-radius: 8;
+    -fx-padding: 8 14;
+    -fx-cursor: hand;
+}
+
+.btn-primary-sm:hover {
+    -fx-background-color: -fx-naranja-hover;
+}
+
+.btn-disabled-sm {
+    -fx-background-color: #E9ECF1;
+    -fx-text-fill: -fx-gris-medio;
+    -fx-font-size: 12px;
+    -fx-background-radius: 8;
+    -fx-padding: 8 14;
+}
+
+.btn-accion {
+    -fx-background-color: #EEF1F6;
+    -fx-text-fill: -fx-azul-oscuro;
+    -fx-font-size: 11px;
+    -fx-background-radius: 7;
+    -fx-padding: 6 12;
+    -fx-cursor: hand;
+}
+
+.btn-accion:hover {
+    -fx-background-color: derive(-fx-azul-oscuro, 85%);
+}
+
+.btn-accion-primaria {
+    -fx-background-color: derive(-fx-naranja, 35%);
+    -fx-text-fill: -fx-azul-oscuro;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 7;
+    -fx-padding: 6 12;
+    -fx-cursor: hand;
+}
+
+.btn-accion-primaria:hover {
+    -fx-background-color: -fx-naranja;
+}
+
+/* ==========================================================
+   TARJETAS DE ESTADÍSTICAS
+   ========================================================== */
+
+.stat-card {
+    -fx-background-color: -fx-blanco;
+    -fx-background-radius: 16;
+    -fx-border-color: -fx-gris-borde;
+    -fx-border-radius: 16;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(20,33,61,0.06), 12, 0, 0, 4);
+}
+
+.stat-icon {
+    -fx-font-size: 22px;
+}
+
+.stat-number {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-azul-oscuro;
+}
+
+.stat-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: -fx-gris-medio;
+}
+
+/* ==========================================================
+   TARJETAS DE LIBRO
+   ========================================================== */
+
+.libro-card {
+    -fx-background-color: -fx-blanco;
+    -fx-background-radius: 16;
+    -fx-border-color: -fx-gris-borde;
+    -fx-border-radius: 16;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(20,33,61,0.06), 10, 0, 0, 3);
+    -fx-cursor: hand;
+}
+
+.libro-card:hover {
+    -fx-border-color: -fx-naranja;
+    -fx-effect: dropshadow(gaussian, rgba(20,33,61,0.14), 16, 0, 0, 6);
+    -fx-translate-y: -2;
+}
+
+.portada-placeholder {
+    -fx-background-radius: 12;
+}
+
+.portada-iniciales {
+    -fx-text-fill: white;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-opacity: 0.9;
+}
+
+.libro-titulo {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-gris-oscuro;
+}
+
+.libro-autor {
+    -fx-font-size: 12px;
+    -fx-text-fill: -fx-gris-medio;
+}
+
+.libro-categoria {
+    -fx-font-size: 11px;
+    -fx-text-fill: -fx-naranja;
+    -fx-font-weight: bold;
+}
+
+/* ==========================================================
+   BADGES
+   ========================================================== */
+
+.badge {
+    -fx-padding: 4 12;
+    -fx-background-radius: 20;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.badge-disponible {
+    -fx-background-color: #E3F6E8;
+    -fx-text-fill: #2C8C4E;
+}
+
+.badge-prestado {
+    -fx-background-color: #F1F2F5;
+    -fx-text-fill: -fx-gris-medio;
+}
+
+.badge-al-dia {
+    -fx-background-color: #E3F6E8;
+    -fx-text-fill: #2C8C4E;
+}
+
+.badge-por-vencer {
+    -fx-background-color: #FFF1DA;
+    -fx-text-fill: #B5720A;
+}
+
+.badge-devuelto {
+    -fx-background-color: #E7ECF5;
+    -fx-text-fill: #45577A;
+}
+
+.badge-retrasado {
+    -fx-background-color: #FBE4E4;
+    -fx-text-fill: #C0392B;
+}
+
+/* ==========================================================
+   BUSCADOR / FILTROS
+   ========================================================== */
+
+.search-bar {
+    -fx-background-color: -fx-blanco;
+    -fx-background-radius: 14;
+    -fx-border-color: -fx-gris-borde;
+    -fx-border-radius: 14;
+    -fx-border-width: 1;
+    -fx-padding: 8 8 8 18;
+}
+
+.search-field {
+    -fx-background-color: transparent;
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-gris-oscuro;
+}
+
+.search-field:focused {
+    -fx-background-color: transparent;
+}
+
+.filtros-card {
+    -fx-background-color: -fx-blanco;
+    -fx-background-radius: 14;
+    -fx-border-color: -fx-gris-borde;
+    -fx-border-radius: 14;
+    -fx-border-width: 1;
+    -fx-padding: 18 20;
+}
+
+.filtro-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: -fx-gris-medio;
+    -fx-font-weight: bold;
+}
+
+.filtro-combo, .filtro-combo TextField {
+    -fx-background-color: -fx-fondo-claro;
+    -fx-background-radius: 9;
+    -fx-border-color: -fx-gris-borde;
+    -fx-border-radius: 9;
+    -fx-border-width: 1;
+    -fx-padding: 6 10;
+    -fx-font-size: 13px;
+}
+
+.filtro-combo:focused {
+    -fx-border-color: -fx-naranja;
+}
+
+/* ==========================================================
+   TARJETAS DE INFO / FORMULARIO (Préstamos, Perfil)
+   ========================================================== */
+
+.info-card, .form-card {
+    -fx-background-color: -fx-blanco;
+    -fx-background-radius: 18;
+    -fx-border-color: -fx-gris-borde;
+    -fx-border-radius: 18;
+    -fx-border-width: 1;
+    -fx-padding: 24;
+    -fx-effect: dropshadow(gaussian, rgba(20,33,61,0.06), 12, 0, 0, 4);
+}
+
+.portada-grande {
+    -fx-background-radius: 14;
+    -fx-background-color: -fx-azul-oscuro;
+    -fx-pref-height: 200;
+    -fx-max-width: Infinity;
+}
+
+.portada-iniciales-grande {
+    -fx-text-fill: white;
+    -fx-font-size: 44px;
+    -fx-font-weight: bold;
+    -fx-opacity: 0.9;
+}
+
+.libro-titulo-grande {
+    -fx-font-size: 19px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-gris-oscuro;
+}
+
+.libro-autor-grande {
+    -fx-font-size: 13px;
+    -fx-text-fill: -fx-gris-medio;
+}
+
+.libro-descripcion {
+    -fx-font-size: 12.5px;
+    -fx-text-fill: -fx-gris-medio;
+    -fx-line-spacing: 3;
+}
+
+.fecha-limite-valor {
+    -fx-background-color: -fx-fondo-claro;
+    -fx-background-radius: 9;
+    -fx-border-color: -fx-gris-borde;
+    -fx-border-radius: 9;
+    -fx-border-width: 1;
+    -fx-padding: 7 10;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-azul-oscuro;
+    -fx-min-width: 140;
+}
+
+/* ==========================================================
+   TABLEVIEW MODERNA
+   ========================================================== */
+
+.tabla-moderna {
+    -fx-background-color: -fx-blanco;
+    -fx-background-radius: 16;
+    -fx-border-color: -fx-gris-borde;
+    -fx-border-radius: 16;
+    -fx-border-width: 1;
+    -fx-padding: 4;
+}
+
+.tabla-moderna .column-header-background {
+    -fx-background-color: -fx-fondo-claro;
+    -fx-background-radius: 12 12 0 0;
+}
+
+.tabla-moderna .column-header,
+.tabla-moderna .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 12 10;
+}
+
+.tabla-moderna .column-header .label {
+    -fx-text-fill: -fx-gris-medio;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.tabla-moderna .table-row-cell {
+    -fx-background-color: -fx-blanco;
+    -fx-border-color: transparent transparent -fx-gris-borde transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 4 0;
+}
+
+.tabla-moderna .table-row-cell:odd {
+    -fx-background-color: #FBFCFE;
+}
+
+.tabla-moderna .table-row-cell:hover {
+    -fx-background-color: #FFF6E7;
+}
+
+.tabla-moderna .table-row-cell:selected {
+    -fx-background-color: #FFEFD3;
+}
+
+.tabla-moderna .table-cell {
+    -fx-text-fill: -fx-gris-oscuro;
+    -fx-font-size: 12.5px;
+    -fx-padding: 10;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.tabla-moderna .table-row-cell:empty {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+.tabla-moderna .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+/* ==========================================================
+   TABS (Perfil)
+   ========================================================== */
+
+.tabs-modernas .tab-header-area .tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.tabs-modernas .tab {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10 10 0 0;
+    -fx-padding: 10 18;
+}
+
+.tabs-modernas .tab .tab-label {
+    -fx-text-fill: -fx-gris-medio;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.tabs-modernas .tab:selected {
+    -fx-background-color: -fx-blanco;
+}
+
+.tabs-modernas .tab:selected .tab-label {
+    -fx-text-fill: -fx-azul-oscuro;
+}
+
+.tabs-modernas .tab-content-area {
+    -fx-background-color: -fx-blanco;
+    -fx-background-radius: 0 16 16 16;
+    -fx-border-color: -fx-gris-borde;
+    -fx-border-radius: 0 16 16 16;
+    -fx-border-width: 1;
+}
+
+.tab-contenido {
+    -fx-background-color: transparent;
+}
+
+/* ==========================================================
+   PERFIL — TARJETA DE USUARIO
+   ========================================================== */
+
+.avatar-grande {
+    -fx-min-width: 96; -fx-min-height: 96;
+    -fx-max-width: 96; -fx-max-height: 96;
+    -fx-background-color: -fx-naranja;
+    -fx-background-radius: 48;
+}
+
+.avatar-grande-label {
+    -fx-text-fill: -fx-azul-oscuro;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
+
+.perfil-nombre {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-gris-oscuro;
+}
+
+.perfil-dato {
+    -fx-font-size: 12.5px;
+    -fx-text-fill: -fx-gris-medio;
+}
+
+/* ==========================================================
+   CHECKBOX
+   ========================================================== */
+
+.check-box .box {
+    -fx-background-color: -fx-blanco;
+    -fx-border-color: -fx-gris-borde;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+
+.check-box:selected .box {
+    -fx-background-color: -fx-naranja;
+    -fx-border-color: -fx-naranja;
+}
+
+.check-box .text {
+    -fx-font-size: 12.5px;
+    -fx-text-fill: -fx-gris-oscuro;
+}
+
+/* ==========================================================
+   DIÁLOGOS
+   ========================================================== */
+
+.dialogo-app {
+    -fx-background-color: -fx-blanco;
+    -fx-font-family: -fx-font-family;
+}
+
+.dialogo-app .header-panel {
+    -fx-background-color: -fx-azul-oscuro;
+}
+
+.dialogo-app .header-panel .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.dialogo-app .content.label {
+    -fx-text-fill: -fx-gris-oscuro;
+    -fx-font-size: 13px;
+}
+
+.dialogo-app .button-bar .button {
+    -fx-background-color: -fx-naranja;
+    -fx-text-fill: -fx-azul-oscuro;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.dialogo-app .button-bar .button:hover {
+    -fx-background-color: -fx-naranja-hover;
+}
+
+/* ==========================================================
+   SCROLLBAR GENERAL
+   ========================================================== */
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical, .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: derive(-fx-gris-borde, -10%);
+    -fx-background-radius: 8;
+}

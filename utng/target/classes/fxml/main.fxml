@@ -11,7 +11,7 @@
 
 <BorderPane fx:id="root" stylesheets="@../css/style.css" styleClass="app-root"
             xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.utng.biblioteca.controller.MainController">
+            fx:controller="biblioteca.utng.controller.MainController">
 
     <left>
         <VBox styleClass="sidebar" prefWidth="240" minWidth="220">

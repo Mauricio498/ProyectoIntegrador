@@ -1,4 +1,4 @@
-package com.utng.biblioteca.model;
+package biblioteca.utng.model;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;

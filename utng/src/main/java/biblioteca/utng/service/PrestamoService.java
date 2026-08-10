@@ -1,10 +1,10 @@
-package com.utng.biblioteca.service;
+package biblioteca.utng.service;
 
-import com.utng.biblioteca.model.EstadoPrestamo;
-import com.utng.biblioteca.model.Libro;
-import com.utng.biblioteca.model.Prestamo;
-import com.utng.biblioteca.model.Usuario;
-import com.utng.biblioteca.repository.PrestamoRepository;
+import biblioteca.utng.model.EstadoPrestamo;
+import biblioteca.utng.model.Libro;
+import biblioteca.utng.model.Prestamo;
+import biblioteca.utng.model.Usuario;
+import biblioteca.utng.repository.PrestamoRepository;
 
 import java.time.LocalDate;
 import java.util.List;

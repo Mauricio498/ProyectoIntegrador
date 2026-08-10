@@ -1,15 +1,15 @@
-package com.utng.biblioteca.controller;
+package biblioteca.utng.controller;
 
-import com.utng.biblioteca.model.EstadoPrestamo;
-import com.utng.biblioteca.model.Libro;
-import com.utng.biblioteca.model.Prestamo;
-import com.utng.biblioteca.model.Usuario;
-import com.utng.biblioteca.service.LibroService;
-import com.utng.biblioteca.service.PrestamoService;
-import com.utng.biblioteca.service.PrestamoService.ResultadoSolicitud;
-import com.utng.biblioteca.service.UsuarioService;
-import com.utng.biblioteca.util.AlertUtil;
-import com.utng.biblioteca.util.TableFactory;
+import biblioteca.utng.model.EstadoPrestamo;
+import biblioteca.utng.model.Libro;
+import biblioteca.utng.model.Prestamo;
+import biblioteca.utng.model.Usuario;
+import biblioteca.utng.service.LibroService;
+import biblioteca.utng.service.PrestamoService;
+import biblioteca.utng.service.PrestamoService.ResultadoSolicitud;
+import biblioteca.utng.service.UsuarioService;
+import biblioteca.utng.util.AlertUtil;
+import biblioteca.utng.util.TableFactory;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;

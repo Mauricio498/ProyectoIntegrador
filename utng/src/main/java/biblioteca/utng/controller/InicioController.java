@@ -1,8 +1,8 @@
-package com.utng.biblioteca.controller;
+package biblioteca.utng.controller;
 
-import com.utng.biblioteca.model.Libro;
-import com.utng.biblioteca.service.LibroService;
-import com.utng.biblioteca.util.CardFactory;
+import biblioteca.utng.model.Libro;
+import biblioteca.utng.service.LibroService;
+import biblioteca.utng.util.CardFactory;
 import javafx.fxml.FXML;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;

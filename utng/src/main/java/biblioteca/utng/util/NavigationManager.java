@@ -1,13 +1,13 @@
-package com.utng.biblioteca.util;
+package biblioteca.utng.util;
 
-import com.utng.biblioteca.controller.BuscadorController;
-import com.utng.biblioteca.controller.InicioController;
-import com.utng.biblioteca.controller.PerfilController;
-import com.utng.biblioteca.controller.PrestamosController;
-import com.utng.biblioteca.model.Libro;
-import com.utng.biblioteca.service.LibroService;
-import com.utng.biblioteca.service.PrestamoService;
-import com.utng.biblioteca.service.UsuarioService;
+import biblioteca.utng.controller.BuscadorController;
+import biblioteca.utng.controller.InicioController;
+import biblioteca.utng.controller.PerfilController;
+import biblioteca.utng.controller.PrestamosController;
+import biblioteca.utng.model.Libro;
+import biblioteca.utng.service.LibroService;
+import biblioteca.utng.service.PrestamoService;
+import biblioteca.utng.service.UsuarioService;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;

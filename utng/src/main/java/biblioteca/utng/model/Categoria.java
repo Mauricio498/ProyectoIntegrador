@@ -1,4 +1,4 @@
-package com.utng.biblioteca.model;
+package biblioteca.utng.model;
 
 /**
  * Categorías disponibles para clasificar los libros del catálogo.

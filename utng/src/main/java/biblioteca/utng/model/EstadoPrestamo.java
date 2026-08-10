@@ -1,4 +1,4 @@
-package com.utng.biblioteca.model;
+package biblioteca.utng.model;
 
 /**
  * Estados posibles de un préstamo. Cada estado tiene una etiqueta legible

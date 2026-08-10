@@ -1,6 +1,6 @@
-package com.utng.biblioteca.repository;
+package biblioteca.utng.repository;
 
-import com.utng.biblioteca.model.Usuario;
+import biblioteca.utng.model.Usuario;
 
 /**
  * Acceso a los datos del usuario. En esta demostración solo existe un

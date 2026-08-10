@@ -1,9 +1,9 @@
-package com.utng.biblioteca.repository;
+package biblioteca.utng.repository;
 
-import com.utng.biblioteca.model.EstadoPrestamo;
-import com.utng.biblioteca.model.Libro;
-import com.utng.biblioteca.model.Prestamo;
-import com.utng.biblioteca.model.Usuario;
+import biblioteca.utng.model.EstadoPrestamo;
+import biblioteca.utng.model.Libro;
+import biblioteca.utng.model.Prestamo;
+import biblioteca.utng.model.Usuario;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

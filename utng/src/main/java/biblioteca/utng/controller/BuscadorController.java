@@ -1,10 +1,10 @@
-package com.utng.biblioteca.controller;
+package biblioteca.utng.controller;
 
-import com.utng.biblioteca.model.Categoria;
-import com.utng.biblioteca.model.Libro;
-import com.utng.biblioteca.service.LibroService;
-import com.utng.biblioteca.service.LibroService.FiltroDisponibilidad;
-import com.utng.biblioteca.util.CardFactory;
+import biblioteca.utng.model.Categoria;
+import biblioteca.utng.model.Libro;
+import biblioteca.utng.service.LibroService;
+import biblioteca.utng.service.LibroService.FiltroDisponibilidad;
+import biblioteca.utng.util.CardFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;

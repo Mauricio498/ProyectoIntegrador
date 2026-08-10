@@ -1,6 +1,6 @@
-package com.utng.biblioteca.util;
+package biblioteca.utng.util;
 
-import com.utng.biblioteca.model.EstadoPrestamo;
+import biblioteca.utng.model.EstadoPrestamo;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;

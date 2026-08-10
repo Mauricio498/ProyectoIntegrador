@@ -1,6 +1,6 @@
-package com.utng.biblioteca.util;
+package biblioteca.utng.util;
 
-import com.utng.biblioteca.model.Libro;
+import biblioteca.utng.model.Libro;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

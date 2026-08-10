@@ -1,8 +1,8 @@
-package com.utng.biblioteca.service;
+package biblioteca.utng.service;
 
-import com.utng.biblioteca.model.Categoria;
-import com.utng.biblioteca.model.Libro;
-import com.utng.biblioteca.repository.LibroRepository;
+import biblioteca.utng.model.Categoria;
+import biblioteca.utng.model.Libro;
+import biblioteca.utng.repository.LibroRepository;
 
 import java.util.List;
 import java.util.Locale;

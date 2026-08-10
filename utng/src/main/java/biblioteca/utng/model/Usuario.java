@@ -1,4 +1,4 @@
-package com.utng.biblioteca.model;
+package biblioteca.utng.model;
 
 /**
  * Representa a un usuario (alumno) de la biblioteca digital.

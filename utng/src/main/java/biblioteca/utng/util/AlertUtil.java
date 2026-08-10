@@ -1,4 +1,4 @@
-package com.utng.biblioteca.util;
+package biblioteca.utng.util;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;

@@ -1,7 +1,7 @@
-package com.utng.biblioteca.service;
+package biblioteca.utng.service;
 
-import com.utng.biblioteca.model.Usuario;
-import com.utng.biblioteca.repository.UsuarioRepository;
+import biblioteca.utng.model.Usuario;
+import biblioteca.utng.repository.UsuarioRepository;
 
 /**
  * Lógica de negocio relacionada con el usuario en sesión y su perfil.

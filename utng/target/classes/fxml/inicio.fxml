@@ -10,7 +10,7 @@
 
 <ScrollPane fitToWidth="true" styleClass="screen-scroll"
             xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.utng.biblioteca.controller.InicioController">
+            fx:controller="biblioteca.utng.controller.InicioController">
     <content>
         <VBox spacing="32" styleClass="screen-container">
             <padding>

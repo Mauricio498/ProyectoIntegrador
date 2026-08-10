@@ -1,7 +1,7 @@
-package com.utng.biblioteca.repository;
+package biblioteca.utng.repository;
 
-import com.utng.biblioteca.model.Categoria;
-import com.utng.biblioteca.model.Libro;
+import biblioteca.utng.model.Categoria;
+import biblioteca.utng.model.Libro;
 
 import java.util.ArrayList;
 import java.util.List;

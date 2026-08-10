@@ -1,13 +1,13 @@
-package com.utng.biblioteca.controller;
+package biblioteca.utng.controller;
 
-import com.utng.biblioteca.model.Usuario;
-import com.utng.biblioteca.repository.LibroRepository;
-import com.utng.biblioteca.repository.PrestamoRepository;
-import com.utng.biblioteca.repository.UsuarioRepository;
-import com.utng.biblioteca.service.LibroService;
-import com.utng.biblioteca.service.PrestamoService;
-import com.utng.biblioteca.service.UsuarioService;
-import com.utng.biblioteca.util.NavigationManager;
+import biblioteca.utng.model.Usuario;
+import biblioteca.utng.repository.LibroRepository;
+import biblioteca.utng.repository.PrestamoRepository;
+import biblioteca.utng.repository.UsuarioRepository;
+import biblioteca.utng.service.LibroService;
+import biblioteca.utng.service.PrestamoService;
+import biblioteca.utng.service.UsuarioService;
+import biblioteca.utng.util.NavigationManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

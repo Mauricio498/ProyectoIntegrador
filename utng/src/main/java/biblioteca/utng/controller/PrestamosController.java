@@ -36,7 +36,7 @@ import java.util.Locale;
  */
 public class PrestamosController {
 
-    private static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd/MMM/yy", new Locale("es", "MX"));
+    private static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd/MMM/yy", Locale.of("es", "MX"));
 
     @FXML private ComboBox<Libro> comboLibro;
     @FXML private StackPane portadaGrande;

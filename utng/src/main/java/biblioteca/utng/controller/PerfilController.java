@@ -29,7 +29,7 @@ import java.util.Locale;
  */
 public class PerfilController {
 
-    private static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd/MMM/yy", new Locale("es", "MX"));
+    private static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd/MMM/yy", Locale.of("es", "MX"));
 
     @FXML private Label lblIniciales;
     @FXML private Label lblNombre;

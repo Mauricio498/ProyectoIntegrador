@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- Dos pestañas con propósitos distintos:
+       Actividad  -> qué pasó en un rango de fechas (accesos, préstamos, búsquedas)
+       Acervo     -> qué hay hoy en la biblioteca, sin depender de fechas
+     El filtro de fechas vive dentro de Actividad porque solo aplica ahí. -->
+<BorderPane styleClass="dashboard"
+            xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="utng.biblioteca.controller.admin.EstadisticasController">
+
+    <top>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="18" right="24" bottom="10" left="24"/>
+            </padding>
+
+            <VBox spacing="1">
+                <Label text="Reportes y estadísticas" styleClass="module-title"/>
+                <Label text="Actividad de la biblioteca y estado del acervo. Los conteos se calculan en la base de datos."
+                       styleClass="module-subtitle" wrapText="true"/>
+            </VBox>
+
+        </VBox>
+    </top>
+
+
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE" styleClass="tabs-modernas">
+            <padding>
+                <Insets top="0" right="24" bottom="18" left="24"/>
+            </padding>
+
+            <!-- ============ PESTAÑA: ACTIVIDAD ============ -->
+            <Tab text="Actividad">
+                <content>
+                    <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+                        <content>
+                            <VBox spacing="18" fillWidth="true">
+
+                                <padding>
+                                    <Insets top="14" right="6" bottom="24" left="6"/>
+                                </padding>
+
+                                <HBox spacing="14" alignment="BOTTOM_LEFT" styleClass="table-card">
+
+                                    <VBox spacing="4">
+                                        <Label text="Rango rápido" styleClass="filtro-label"/>
+                                        <ComboBox fx:id="cmbAtajo" prefWidth="170" minWidth="150"
+                                                  styleClass="toolbar-combo"/>
+                                    </VBox>
+
+                                    <VBox spacing="4">
+                                        <Label text="Desde" styleClass="filtro-label"/>
+                                        <DatePicker fx:id="dpDesde" prefWidth="155" minWidth="140"
+                                                    styleClass="date-picker"/>
+                                    </VBox>
+
+                                    <VBox spacing="4">
+                                        <Label text="Hasta" styleClass="filtro-label"/>
+                                        <DatePicker fx:id="dpHasta" prefWidth="155" minWidth="140"
+                                                    styleClass="date-picker"/>
+                                    </VBox>
+
+                                    <VBox spacing="4">
+                                        <Label text="Agrupar" styleClass="filtro-label"/>
+                                        <ComboBox fx:id="cmbPeriodo" prefWidth="140" minWidth="125"
+                                                  styleClass="toolbar-combo"/>
+                                    </VBox>
+
+                                    <Region HBox.hgrow="ALWAYS"/>
+
+                                    <Button text="Restablecer" mnemonicParsing="false" onAction="#restablecer"
+                                            styleClass="secondary-button"/>
+                                    <Button text="Actualizar" mnemonicParsing="false" onAction="#cargar"
+                                            styleClass="primary-button"/>
+                                    <Button text="Exportar a Excel" mnemonicParsing="false"
+                                            onAction="#exportarExcel" styleClass="excel-button" />
+                                </HBox>
+
+
+                                <Label fx:id="lblEstado" text="" styleClass="dashboard-status"/>
+
+                    <!-- ============ RESUMEN ============ -->
+                    <FlowPane hgap="14" vgap="14" prefWrapLength="1000">
+
+                        <VBox alignment="CENTER_LEFT" spacing="5" prefWidth="190" prefHeight="96"
+                              styleClass="stats-card">
+                            <padding><Insets top="14" right="16" bottom="14" left="16"/></padding>
+                            <Label text="Accesos" styleClass="stats-title"/>
+                            <Label fx:id="lblAccesos" text="0" styleClass="stats-value"/>
+                        </VBox>
+
+                        <VBox alignment="CENTER_LEFT" spacing="5" prefWidth="190" prefHeight="96"
+                              styleClass="stats-card">
+                            <padding><Insets top="14" right="16" bottom="14" left="16"/></padding>
+                            <Label text="Usuarios distintos" styleClass="stats-title"/>
+                            <Label fx:id="lblUsuarios" text="0" styleClass="stats-value"/>
+                        </VBox>
+
+                        <VBox alignment="CENTER_LEFT" spacing="5" prefWidth="190" prefHeight="96"
+                              styleClass="stats-card">
+                            <padding><Insets top="14" right="16" bottom="14" left="16"/></padding>
+                            <Label text="Búsquedas" styleClass="stats-title"/>
+                            <Label fx:id="lblBusquedas" text="0" styleClass="stats-value"/>
+                        </VBox>
+
+                        <VBox alignment="CENTER_LEFT" spacing="5" prefWidth="190" prefHeight="96"
+                              styleClass="stats-card">
+                            <padding><Insets top="14" right="16" bottom="14" left="16"/></padding>
+                            <Label text="Préstamos" styleClass="stats-title"/>
+                            <Label fx:id="lblPrestamos" text="0" styleClass="stats-value"/>
+                        </VBox>
+
+                        <VBox alignment="CENTER_LEFT" spacing="5" prefWidth="190" prefHeight="96"
+                              styleClass="stats-card">
+                            <padding><Insets top="14" right="16" bottom="14" left="16"/></padding>
+                            <Label text="Devoluciones" styleClass="stats-title"/>
+                            <Label fx:id="lblDevoluciones" text="0" styleClass="stats-value"/>
+                        </VBox>
+
+                        <VBox alignment="CENTER_LEFT" spacing="5" prefWidth="190" prefHeight="96"
+                              styleClass="stats-card">
+                            <padding><Insets top="14" right="16" bottom="14" left="16"/></padding>
+                            <Label text="Cobrado en multas" styleClass="stats-title"/>
+                            <Label fx:id="lblCobrado" text="\$0.00" styleClass="stats-value"/>
+                        </VBox>
+
+                    </FlowPane>
+
+                    <!-- ============ ACCESOS ============ -->
+                    <VBox spacing="10" styleClass="table-card">
+                        <Label text="Accesos al sistema" styleClass="table-title"/>
+                        <Label text="Inicios de sesión correctos frente a intentos fallidos."
+                               styleClass="table-footer"/>
+
+                        <LineChart fx:id="chartAccesos" prefHeight="280" minHeight="240"
+                                   createSymbols="true" animated="false" styleClass="grafica">
+                            <xAxis>
+                                <CategoryAxis fx:id="ejeAccesosX" label="Periodo"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="Accesos" forceZeroInRange="true"/>
+                            </yAxis>
+                        </LineChart>
+                    </VBox>
+
+                    <!-- ============ CIRCULACIÓN ============ -->
+                    <VBox spacing="10" styleClass="table-card">
+                        <Label text="Circulación de materiales" styleClass="table-title"/>
+                        <Label text="Préstamos generados y devoluciones registradas."
+                               styleClass="table-footer"/>
+
+                        <BarChart fx:id="chartCirculacion" prefHeight="280" minHeight="240"
+                                  animated="false" styleClass="grafica">
+                            <xAxis>
+                                <CategoryAxis fx:id="ejeCirculacionX" label="Periodo"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="Movimientos" forceZeroInRange="true"/>
+                            </yAxis>
+                        </BarChart>
+                    </VBox>
+
+                    <!-- ============ BÚSQUEDAS ============ -->
+                    <VBox spacing="10" styleClass="table-card">
+                        <Label text="Lo más buscado" styleClass="table-title"/>
+                        <Label text="Términos que la comunidad escribió en el buscador del catálogo."
+                               styleClass="table-footer"/>
+
+                        <BarChart fx:id="chartTerminos" prefHeight="270" minHeight="230"
+                                  animated="false" legendVisible="false" styleClass="grafica">
+                            <xAxis>
+                                <CategoryAxis fx:id="ejeTerminosX" label="Término"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="Veces buscado" forceZeroInRange="true"/>
+                            </yAxis>
+                        </BarChart>
+
+                        <TableView fx:id="tblTerminos" minHeight="200" prefHeight="220"
+                                   styleClass="modern-table">
+                            <columns>
+                                <TableColumn fx:id="colTermino"         text="Término" prefWidth="300"/>
+                                <TableColumn fx:id="colTerminoCantidad" text="Veces" prefWidth="100"/>
+                                <TableColumn fx:id="colTerminoDetalle"  text="Resultados que arrojó"
+                                             prefWidth="240"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+
+                    <!-- ============ MATERIALES ============ -->
+                    <VBox spacing="10" styleClass="table-card">
+                        <Label text="Materiales más prestados" styleClass="table-title"/>
+
+                        <TableView fx:id="tblMateriales" minHeight="240" prefHeight="260"
+                                   styleClass="modern-table">
+                            <columns>
+                                <TableColumn fx:id="colMaterial"         text="Material" prefWidth="360"/>
+                                <TableColumn fx:id="colMaterialAutores"  text="Autores" prefWidth="260"/>
+                                <TableColumn fx:id="colMaterialCantidad" text="Préstamos" prefWidth="110"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+
+                    <!-- ============ DISTRIBUCIÓN ============ -->
+                    <HBox spacing="18">
+
+                        <VBox spacing="10" styleClass="table-card" HBox.hgrow="ALWAYS">
+                            <Label text="Préstamos por tipo de usuario" styleClass="table-title"/>
+                            <PieChart fx:id="chartRol" prefHeight="290" minHeight="250"
+                                      labelsVisible="true" animated="false" styleClass="grafica"/>
+                        </VBox>
+
+                        <VBox spacing="10" styleClass="table-card" HBox.hgrow="ALWAYS">
+                            <Label text="Préstamos por área" styleClass="table-title"/>
+                            <PieChart fx:id="chartArea" prefHeight="290" minHeight="250"
+                                      labelsVisible="true" animated="false" styleClass="grafica"/>
+                            <Label fx:id="lblAreaAviso" wrapText="true" visible="false" managed="false"
+                                   styleClass="table-footer"
+                                   text="Todavía no hay préstamos con área asignada. Ejecuta sql/05_area.sql y captura el área de los usuarios para ver este reporte."/>
+                        </VBox>
+
+                            </HBox>
+
+                            </VBox>
+                        </content>
+                    </ScrollPane>
+                </content>
+            </Tab>
+
+            <!-- ============ PESTAÑA: ACERVO ============ -->
+            <Tab text="Acervo">
+                <content>
+                    <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+                        <content>
+                            <VBox spacing="18" fillWidth="true">
+
+                                <padding>
+                                    <Insets top="14" right="6" bottom="24" left="6"/>
+                                </padding>
+
+                                <HBox alignment="CENTER_LEFT" spacing="12">
+                                    <VBox spacing="1">
+                                        <Label text="Estado del acervo" styleClass="table-title"/>
+                                        <Label text="Qué hay hoy en la biblioteca. No depende del rango de fechas."
+                                               styleClass="table-footer"/>
+                                    </VBox>
+                                    <Region HBox.hgrow="ALWAYS"/>
+                                    <Button text="Actualizar" mnemonicParsing="false"
+                                            onAction="#cargarAcervo" styleClass="primary-button"/>
+                                </HBox>
+
+                                <FlowPane hgap="14" vgap="14" prefWrapLength="1000">
+
+                                    <VBox alignment="CENTER_LEFT" spacing="5" prefWidth="190"
+                                          prefHeight="96" styleClass="stats-card">
+                                        <padding><Insets top="14" right="16" bottom="14" left="16"/></padding>
+                                        <Label text="Materiales activos" styleClass="stats-title"/>
+                                        <Label fx:id="lblAcMateriales" text="0" styleClass="stats-value"/>
+                                    </VBox>
+
+                                    <VBox alignment="CENTER_LEFT" spacing="5" prefWidth="190"
+                                          prefHeight="96" styleClass="stats-card">
+                                        <padding><Insets top="14" right="16" bottom="14" left="16"/></padding>
+                                        <Label text="Ejemplares" styleClass="stats-title"/>
+                                        <Label fx:id="lblAcEjemplares" text="0" styleClass="stats-value"/>
+                                    </VBox>
+
+                                    <VBox alignment="CENTER_LEFT" spacing="5" prefWidth="190"
+                                          prefHeight="96" styleClass="stats-card">
+                                        <padding><Insets top="14" right="16" bottom="14" left="16"/></padding>
+                                        <Label text="Disponibles" styleClass="stats-title"/>
+                                        <Label fx:id="lblAcDisponibles" text="0" styleClass="stats-value"/>
+                                    </VBox>
+
+                                    <VBox alignment="CENTER_LEFT" spacing="5" prefWidth="190"
+                                          prefHeight="96" styleClass="stats-card">
+                                        <padding><Insets top="14" right="16" bottom="14" left="16"/></padding>
+                                        <Label text="Ejemplares por material" styleClass="stats-title"/>
+                                        <Label fx:id="lblAcPromedio" text="0" styleClass="stats-value"/>
+                                    </VBox>
+
+                                    <VBox alignment="CENTER_LEFT" spacing="5" prefWidth="190"
+                                          prefHeight="96" styleClass="stats-card">
+                                        <padding><Insets top="14" right="16" bottom="14" left="16"/></padding>
+                                        <Label text="Sin ejemplares" styleClass="stats-title"/>
+                                        <Label fx:id="lblAcSinEjemplar" text="0" styleClass="stats-value"/>
+                                    </VBox>
+
+                                    <VBox alignment="CENTER_LEFT" spacing="5" prefWidth="190"
+                                          prefHeight="96" styleClass="stats-card">
+                                        <padding><Insets top="14" right="16" bottom="14" left="16"/></padding>
+                                        <Label text="Autores / editoriales" styleClass="stats-title"/>
+                                        <Label fx:id="lblAcCatalogos" text="0" styleClass="stats-value"/>
+                                    </VBox>
+
+                                </FlowPane>
+
+                                <HBox spacing="18">
+                                    <VBox spacing="10" styleClass="table-card" HBox.hgrow="ALWAYS">
+                                        <Label text="Materiales por tipo" styleClass="table-title"/>
+                                        <BarChart fx:id="chartAcTipo" prefHeight="260" minHeight="230"
+                                                  animated="false" legendVisible="false"
+                                                  styleClass="grafica">
+                                            <xAxis>
+                                                <CategoryAxis fx:id="ejeAcTipoX" label="Tipo"/>
+                                            </xAxis>
+                                            <yAxis>
+                                                <NumberAxis label="Materiales" forceZeroInRange="true"/>
+                                            </yAxis>
+                                        </BarChart>
+                                    </VBox>
+
+                                    <VBox spacing="10" styleClass="table-card" HBox.hgrow="ALWAYS">
+                                        <Label text="Ejemplares por estado" styleClass="table-title"/>
+                                        <PieChart fx:id="chartAcEstado" prefHeight="260" minHeight="230"
+                                                  labelsVisible="true" animated="false"
+                                                  styleClass="grafica"/>
+                                    </VBox>
+                                </HBox>
+
+                                <HBox spacing="18">
+                                    <VBox spacing="10" styleClass="table-card" HBox.hgrow="ALWAYS">
+                                        <Label text="Materias con más títulos" styleClass="table-title"/>
+                                        <Label text="Agrupado por el primer tramo de la clasificación."
+                                               styleClass="table-footer"/>
+                                        <BarChart fx:id="chartAcClasificacion" prefHeight="270"
+                                                  minHeight="240" animated="false" legendVisible="false"
+                                                  styleClass="grafica">
+                                            <xAxis>
+                                                <CategoryAxis fx:id="ejeAcClasifX" label="Clasificación"/>
+                                            </xAxis>
+                                            <yAxis>
+                                                <NumberAxis label="Títulos" forceZeroInRange="true"/>
+                                            </yAxis>
+                                        </BarChart>
+                                    </VBox>
+
+                                    <VBox spacing="10" styleClass="table-card" HBox.hgrow="ALWAYS">
+                                        <Label text="Editoriales con más títulos" styleClass="table-title"/>
+                                        <TableView fx:id="tblAcEditorial" minHeight="240" prefHeight="270"
+                                                   styleClass="modern-table">
+                                            <columns>
+                                                <TableColumn fx:id="colEditorialNombre" text="Editorial"
+                                                             prefWidth="260"/>
+                                                <TableColumn fx:id="colEditorialTitulos" text="Títulos"
+                                                             prefWidth="110"/>
+                                            </columns>
+                                        </TableView>
+                                    </VBox>
+                                </HBox>
+
+                                <VBox spacing="10" styleClass="table-card">
+                                    <HBox alignment="CENTER_LEFT" spacing="12">
+                                        <Label text="Inventario" styleClass="table-title"/>
+                                        <CheckBox fx:id="chkSoloProblemas"
+                                                  text="Solo los que necesitan revisión"
+                                                  onAction="#cargarInventario"/>
+                                        <Region HBox.hgrow="ALWAYS"/>
+                                        <Label fx:id="lblInventario" text="" styleClass="table-footer"/>
+                                    </HBox>
+
+                                    <TableView fx:id="tblInventario" minHeight="300" prefHeight="340"
+                                               styleClass="modern-table">
+                                        <columns>
+                                            <TableColumn fx:id="colInvTitulo"      text="Título" prefWidth="240"/>
+                                            <TableColumn fx:id="colInvClasif"      text="Clasificación" prefWidth="130"/>
+                                            <TableColumn fx:id="colInvTipo"        text="Tipo" prefWidth="100"/>
+                                            <TableColumn fx:id="colInvEditorial"   text="Editorial" prefWidth="150"/>
+                                            <TableColumn fx:id="colInvAnio"        text="Año" prefWidth="70"/>
+                                            <TableColumn fx:id="colInvDisponibles" text="Libres / Total" prefWidth="110"/>
+                                            <TableColumn fx:id="colInvPrestamos"   text="Préstamos" prefWidth="95"/>
+                                            <TableColumn fx:id="colInvObservacion" text="Observación" prefWidth="150"/>
+                                        </columns>
+                                    </TableView>
+
+                                    <HBox alignment="CENTER_LEFT" spacing="8" styleClass="barra-paginacion">
+                                        <Label text="Por página" styleClass="filtro-label" minWidth="76"/>
+                                        <ComboBox fx:id="cmbInvPorPagina" prefWidth="80" minWidth="80"
+                                                  styleClass="toolbar-combo"/>
+                                        <Region HBox.hgrow="ALWAYS"/>
+                                        <Label fx:id="lblInvPagina" text="" styleClass="table-footer"/>
+                                        <Button fx:id="btnInvAnterior" text="◀" mnemonicParsing="false"
+                                                minWidth="42" styleClass="btn-pagina"/>
+                                        <Button fx:id="btnInvSiguiente" text="▶" mnemonicParsing="false"
+                                                minWidth="42" styleClass="btn-pagina"/>
+                                    </HBox>
+                                </VBox>
+
+                            </VBox>
+                        </content>
+                    </ScrollPane>
+                </content>
+            </Tab>
+
+        </TabPane>
+    </center>
+
+</BorderPane>

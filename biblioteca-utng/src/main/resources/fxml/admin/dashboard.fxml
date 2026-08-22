@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_LEFT" spacing="24" fillWidth="true" styleClass="dashboard"
+      xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="utng.biblioteca.controller.admin.DashboardController">
+
+    <padding>
+        <Insets top="30" right="35" bottom="30" left="35"/>
+    </padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="12">
+        <VBox spacing="5">
+            <Label fx:id="lblBienvenida" text="Hola" styleClass="dashboard-title"/>
+            <Label text="Resumen de la actividad actual en el sistema."
+                   wrapText="true" styleClass="dashboard-description"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Actualizar" mnemonicParsing="false" onAction="#cargar" styleClass="secondary-button"/>
+    </HBox>
+
+    <Separator/>
+
+    <FlowPane hgap="20" vgap="20" prefWrapLength="1000">
+
+        <VBox alignment="CENTER_LEFT" spacing="8" prefWidth="230" prefHeight="120" styleClass="stats-card">
+            <padding><Insets top="18" right="20" bottom="18" left="20"/></padding>
+            <Label text="📚" styleClass="stats-icon"/>
+            <Label fx:id="lblMateriales" text="0" styleClass="stats-value"/>
+            <Label text="Materiales activos" styleClass="stats-title"/>
+        </VBox>
+
+        <VBox alignment="CENTER_LEFT" spacing="8" prefWidth="230" prefHeight="120" styleClass="stats-card">
+            <padding><Insets top="18" right="20" bottom="18" left="20"/></padding>
+            <Label text="✅" styleClass="stats-icon"/>
+            <Label fx:id="lblDisponibles" text="0" styleClass="stats-value"/>
+            <Label text="Ejemplares disponibles" styleClass="stats-title"/>
+        </VBox>
+
+        <VBox alignment="CENTER_LEFT" spacing="8" prefWidth="230" prefHeight="120" styleClass="stats-card">
+            <padding><Insets top="18" right="20" bottom="18" left="20"/></padding>
+            <Label text="🔄" styleClass="stats-icon"/>
+            <Label fx:id="lblPrestamos" text="0" styleClass="stats-value"/>
+            <Label text="Préstamos activos" styleClass="stats-title"/>
+        </VBox>
+
+        <VBox alignment="CENTER_LEFT" spacing="8" prefWidth="230" prefHeight="120" styleClass="stats-card">
+            <padding><Insets top="18" right="20" bottom="18" left="20"/></padding>
+            <Label text="⚠" styleClass="stats-icon"/>
+            <Label fx:id="lblRetrasos" text="0" styleClass="stats-value"/>
+            <Label text="Devoluciones vencidas" styleClass="stats-title"/>
+        </VBox>
+
+        <VBox alignment="CENTER_LEFT" spacing="8" prefWidth="230" prefHeight="120" styleClass="stats-card">
+            <padding><Insets top="18" right="20" bottom="18" left="20"/></padding>
+            <Label text="👥" styleClass="stats-icon"/>
+            <Label fx:id="lblUsuarios" text="0" styleClass="stats-value"/>
+            <Label text="Usuarios activos" styleClass="stats-title"/>
+        </VBox>
+
+        <VBox alignment="CENTER_LEFT" spacing="8" prefWidth="230" prefHeight="120" styleClass="stats-card">
+            <padding><Insets top="18" right="20" bottom="18" left="20"/></padding>
+            <Label text="📨" styleClass="stats-icon"/>
+            <Label fx:id="lblSolicitudesPrestamo" text="0" styleClass="stats-value"/>
+            <Label text="Préstamos por autorizar" styleClass="stats-title"/>
+        </VBox>
+
+        <VBox alignment="CENTER_LEFT" spacing="8" prefWidth="230" prefHeight="120" styleClass="stats-card">
+            <padding><Insets top="18" right="20" bottom="18" left="20"/></padding>
+            <Label text="📄" styleClass="stats-icon"/>
+            <Label fx:id="lblSolicitudes" text="0" styleClass="stats-value"/>
+            <Label text="Solicitudes de compra" styleClass="stats-title"/>
+        </VBox>
+
+        <VBox alignment="CENTER_LEFT" spacing="8" prefWidth="230" prefHeight="120" styleClass="stats-card">
+            <padding><Insets top="18" right="20" bottom="18" left="20"/></padding>
+            <Label text="💰" styleClass="stats-icon"/>
+            <Label fx:id="lblMultas" text="\$0.00" styleClass="stats-value"/>
+            <Label text="Multas por cobrar" styleClass="stats-title"/>
+        </VBox>
+
+    </FlowPane>
+
+    <Separator/>
+
+    <VBox spacing="15" styleClass="table-card">
+        <Label text="Devoluciones vencidas" styleClass="table-title"/>
+
+        <TableView fx:id="tblRetrasos" styleClass="modern-table" minHeight="220" prefHeight="220">
+            <columns>
+                <TableColumn fx:id="colUsuario" text="Usuario" prefWidth="220"/>
+                <TableColumn fx:id="colTitulo"  text="Material" prefWidth="320"/>
+                <TableColumn fx:id="colCodigo"  text="Ejemplar" prefWidth="160"/>
+                <TableColumn fx:id="colLimite"  text="Fecha límite" prefWidth="140"/>
+                <TableColumn fx:id="colDias"    text="Días de retraso" prefWidth="140"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+    <Label fx:id="lblEstado" text="" styleClass="dashboard-status"/>
+
+</VBox>

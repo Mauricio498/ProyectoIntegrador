@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane styleClass="books-module"
+            xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="utng.biblioteca.controller.admin.UsuariosController">
+
+    <top>
+        <VBox spacing="12">
+            <padding>
+                <Insets top="18" right="24" bottom="12" left="24"/>
+            </padding>
+
+            <HBox alignment="CENTER_LEFT" spacing="14">
+                <VBox spacing="1">
+                    <Label text="Usuarios" styleClass="module-title"/>
+                    <Label text="Los límites de préstamo dependen del rol, se configuran en la tabla Rol."
+                           styleClass="module-subtitle"/>
+                </VBox>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Button fx:id="btnNuevo" text="+ Nuevo usuario" mnemonicParsing="false"
+                        onAction="#nuevo" styleClass="primary-button"/>
+                <Button fx:id="btnPanel" text="Mostrar formulario" mnemonicParsing="false"
+                        onAction="#alternarPanel" styleClass="secondary-button"/>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <TextField fx:id="txtBuscar" minWidth="220"
+                           promptText="Buscar por nombre, número de control, correo o usuario..."
+                           HBox.hgrow="ALWAYS" maxWidth="Infinity" styleClass="search-field"/>
+
+                <ComboBox fx:id="cmbFiltroRol" promptText="Rol" prefWidth="170" minWidth="140"
+                          styleClass="toolbar-combo"/>
+                <CheckBox fx:id="chkSoloActivos" text="Solo activos" onAction="#buscar"/>
+
+                <Button text="Limpiar" mnemonicParsing="false" onAction="#limpiarFiltros"
+                        styleClass="secondary-button"/>
+                <Button text="Buscar" mnemonicParsing="false" onAction="#buscar"
+                        styleClass="primary-button"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <SplitPane fx:id="divisor" dividerPositions="0.68" styleClass="divisor-modulo">
+            <padding>
+                <Insets top="0" right="24" bottom="18" left="24"/>
+            </padding>
+
+            <VBox spacing="8" styleClass="table-card" minWidth="520" minHeight="200">
+
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="Padrón de usuarios" styleClass="table-title"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblResumen" text="" styleClass="table-footer"/>
+                </HBox>
+
+                <TableView fx:id="tblUsuarios" minHeight="110" VBox.vgrow="ALWAYS"
+                           styleClass="modern-table">
+                    <columns>
+                        <TableColumn fx:id="colNumeroControl" text="No. control" prefWidth="110"/>
+                        <TableColumn fx:id="colNombre"        text="Nombre" prefWidth="200"/>
+                        <TableColumn fx:id="colCorreo"        text="Correo" prefWidth="180"/>
+                        <TableColumn fx:id="colUsuario"       text="Usuario" prefWidth="110"/>
+                        <TableColumn fx:id="colRol"           text="Rol" prefWidth="120"/>
+                        <TableColumn fx:id="colArea"          text="Área" prefWidth="150"/>
+                        <TableColumn fx:id="colLimite"        text="Límite" prefWidth="130"/>
+                        <TableColumn fx:id="colEstado"        text="Estado" prefWidth="85"/>
+                    </columns>
+                </TableView>
+
+                <HBox alignment="CENTER_LEFT" spacing="8" styleClass="barra-paginacion">
+                    <Label text="Por página" styleClass="filtro-label" minWidth="76"/>
+                    <ComboBox fx:id="cmbPorPagina" prefWidth="80" minWidth="80"
+                              styleClass="toolbar-combo"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblPagina" text="" styleClass="table-footer"/>
+                    <Button fx:id="btnAnterior" text="◀" mnemonicParsing="false"
+                            minWidth="42" styleClass="btn-pagina"/>
+                    <Button fx:id="btnSiguiente" text="▶" mnemonicParsing="false"
+                            minWidth="42" styleClass="btn-pagina"/>
+                </HBox>
+
+            </VBox>
+
+            <ScrollPane fx:id="panelFormulario" fitToWidth="true" minWidth="320"
+                        styleClass="scroll-pane">
+                <content>
+                    <VBox spacing="8" styleClass="table-card">
+
+                        <padding>
+                            <Insets top="16" right="16" bottom="16" left="16"/>
+                        </padding>
+
+                        <Label fx:id="lblFormulario" text="Nuevo usuario" styleClass="table-title"
+                               wrapText="true"/>
+
+                        <Label text="Número de control o empleado" styleClass="filtro-label"/>
+                        <TextField fx:id="txtNumeroControl" promptText="A00123456"
+                                   styleClass="search-field"/>
+
+                        <Label text="Nombre completo" styleClass="filtro-label"/>
+                        <TextField fx:id="txtNombre" promptText="Nombre y apellidos"
+                                   styleClass="search-field"/>
+
+                        <Label text="Correo" styleClass="filtro-label"/>
+                        <TextField fx:id="txtCorreo" promptText="usuario@utng.edu.mx"
+                                   styleClass="search-field"/>
+
+                        <Label text="Teléfono" styleClass="filtro-label"/>
+                        <TextField fx:id="txtTelefono" promptText="10 dígitos"
+                                   styleClass="search-field"/>
+
+                        <Separator/>
+
+                        <Label text="Usuario de acceso" styleClass="filtro-label"/>
+                        <TextField fx:id="txtUsuario" promptText="Dejar vacío si no accede"
+                                   styleClass="search-field"/>
+
+                        <Label text="Contraseña" styleClass="filtro-label"/>
+                        <PasswordField fx:id="txtPassword" styleClass="search-field"/>
+
+                        <Label text="Rol" styleClass="filtro-label"/>
+                        <ComboBox fx:id="cmbRol" maxWidth="Infinity" styleClass="toolbar-combo"/>
+
+                        <Label fx:id="lblArea" text="Área académica"
+                               styleClass="filtro-label"/>
+                        <ComboBox fx:id="cmbArea" maxWidth="Infinity" styleClass="toolbar-combo"/>
+
+                        <CheckBox fx:id="chkActivo" text="Cuenta activa"/>
+
+                        <Label fx:id="lblDetalle" text="" wrapText="true" styleClass="table-footer"/>
+
+                        <HBox spacing="8">
+                            <Button text="Limpiar" mnemonicParsing="false" onAction="#nuevo"
+                                    styleClass="secondary-button" HBox.hgrow="ALWAYS"
+                                    maxWidth="Infinity"/>
+                            <Button text="Guardar" mnemonicParsing="false" onAction="#guardar"
+                                    styleClass="primary-button" HBox.hgrow="ALWAYS"
+                                    maxWidth="Infinity"/>
+                        </HBox>
+
+                        <HBox spacing="8">
+                            <Button text="Ver préstamos" mnemonicParsing="false"
+                                    onAction="#verPrestamos" styleClass="secondary-button"
+                                    HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                            <Button fx:id="btnBaja" text="Dar de baja" mnemonicParsing="false"
+                                    onAction="#cambiarEstado" styleClass="danger-button"
+                                    HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                        </HBox>
+
+                    </VBox>
+                </content>
+            </ScrollPane>
+
+        </SplitPane>
+    </center>
+
+</BorderPane>

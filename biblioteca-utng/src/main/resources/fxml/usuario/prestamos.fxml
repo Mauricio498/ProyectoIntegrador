@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane fitToWidth="true" styleClass="screen-scroll"
+            xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="utng.biblioteca.controller.usuario.PrestamosController">
+    <content>
+        <VBox spacing="24" styleClass="screen-container">
+            <padding>
+                <Insets top="32" right="40" bottom="40" left="40"/>
+            </padding>
+
+            <Label text="Mis préstamos" styleClass="page-title"/>
+
+            <VBox spacing="6" styleClass="filtros-card">
+                <Label fx:id="lblCupo" text="" styleClass="filtro-label"/>
+                <Label fx:id="lblAdeudo" text="" styleClass="filtro-label"/>
+            </VBox>
+
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <CheckBox fx:id="chkSoloActivos" text="Ver solo los que tengo sin devolver"
+                          onAction="#cargar"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="lblResumen" text="" styleClass="section-subtitle"/>
+                <Button text="Actualizar" styleClass="btn-secondary" onAction="#cargar"/>
+            </HBox>
+
+            <VBox fx:id="contenedorPrestamos" spacing="12"/>
+
+            <Label text="Mis solicitudes" styleClass="section-title"/>
+            <Label text="Quedarán pendientes hasta que el personal de biblioteca las revisa."
+                   styleClass="section-subtitle"/>
+            <VBox fx:id="contenedorSolicitudes" spacing="12"/>
+
+        </VBox>
+    </content>
+</ScrollPane>

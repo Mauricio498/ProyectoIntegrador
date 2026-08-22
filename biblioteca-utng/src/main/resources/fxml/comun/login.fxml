@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane styleClass="app-root"
+            xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="utng.biblioteca.controller.comun.LoginController">
+
+    <center>
+        <HBox alignment="CENTER" styleClass="login-fondo">
+
+            <VBox alignment="CENTER" spacing="14" maxWidth="440" maxHeight="640"
+                  styleClass="login-card">
+
+                <padding>
+                    <Insets top="36" right="44" bottom="36" left="44"/>
+                </padding>
+
+                <!-- ESPACIO DEL LOGOTIPO: sustituye src/main/resources/images/logo.png
+                     por el archivo definitivo, conservando el nombre y la ruta. -->
+                <StackPane styleClass="logo-container">
+                    <ImageView fitHeight="88" preserveRatio="true" smooth="true">
+                        <image>
+                            <Image url="@../../images/logo.png"/>
+                        </image>
+                    </ImageView>
+                </StackPane>
+
+                <Label text="Biblioteca UTNG" styleClass="login-titulo"/>
+                <Label text="Sistema de Gestión Bibliotecaria" styleClass="section-subtitle"/>
+
+                <Separator/>
+
+                <VBox spacing="4" maxWidth="Infinity">
+                    <Label text="Usuario" styleClass="filtro-label"/>
+                    <TextField fx:id="txtUsuario" promptText="Escribe tu usuario"
+                               styleClass="search-field"/>
+                </VBox>
+
+                <VBox spacing="4" maxWidth="Infinity">
+                    <Label text="Contraseña" styleClass="filtro-label"/>
+                    <PasswordField fx:id="txtPassword" promptText="Escribe tu contraseña"
+                                   styleClass="search-field"/>
+                </VBox>
+
+                <Label fx:id="lblMensaje" text="" wrapText="true" visible="false" managed="false"
+                       maxWidth="Infinity" styleClass="login-error"/>
+
+                <Button fx:id="btnEntrar" text="Entrar" onAction="#entrar"
+                        maxWidth="Infinity" styleClass="btn-primary"/>
+
+                <HBox alignment="CENTER" spacing="6">
+                    <Label text="¿No tienes cuenta?" styleClass="texto-legal"/>
+                    <Button text="Crear una cuenta" onAction="#irARegistro" styleClass="btn-link"/>
+                </HBox>
+
+                <Separator/>
+
+                <Button fx:id="btnInvitado" text="Entrar sin cuenta" onAction="#entrarSinCuenta"
+                        maxWidth="Infinity" styleClass="btn-secondary"/>
+
+                <Label wrapText="true" textAlignment="CENTER" maxWidth="Infinity"
+                       styleClass="texto-legal"
+                       text="Sin cuenta puedes consultar todo el catálogo. Para solicitar préstamos necesitas iniciar sesión."/>
+
+                <Separator/>
+
+                <!-- El acceso es la pantalla a la que vuelven todos los caminos,
+                     así que es donde tiene sentido cerrar la aplicación. -->
+                <Button fx:id="btnSalir" text="Salir de la aplicación" onAction="#salir"
+                        maxWidth="Infinity" styleClass="btn-salir"/>
+
+                <Region minHeight="2"/>
+
+            </VBox>
+
+        </HBox>
+    </center>
+
+</BorderPane>

@@ -1,0 +1,966 @@
+/* ============================================================================
+   BIBLIOTECA UTNG - PANEL DE GESTIÓN
+   Interfaz de SuperAdministrador y Administrador (formato heredado de utng1).
+
+   PALETA INSTITUCIONAL (guía de estilo)
+     #2A3087  azul institucional  -> color primario, acciones y encabezados
+     #18A680  verde               -> foco, confirmación, estados correctos
+     #C7D4D8  azul claro          -> superficies, bordes y botón secundario
+     #969193  gris                -> texto secundario y estado presionado
+     #262628  carbón              -> texto principal
+
+   TIPOGRAFÍA
+     H1 36px Bold | H2 28px SemiBold | Párrafo 16px Regular
+     Botones 16px Medium | Texto legal 12px Regular
+
+   Las fuentes Archivo y Telegraf se cargan desde /fonts si están presentes;
+   si no, se usa Arial como respaldo (ver App.java).
+   ============================================================================ */
+
+
+/* ----------------------------------------------------------------- BASE */
+
+.root {
+    -fx-font-family: "Archivo", "Telegraf", "Arial", sans-serif;
+    -fx-font-size: 16px;
+    -fx-background-color: #F2F5F6;
+    -fx-text-fill: #262628;
+}
+
+.scroll-pane,
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.scroll-bar:vertical,
+.scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #C7D4D8;
+    -fx-background-radius: 8;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #969193;
+}
+
+.separator .line {
+    -fx-border-color: #C7D4D8;
+    -fx-border-width: 1 0 0 0;
+}
+
+
+/* ------------------------------------------------------------ BARRA SUPERIOR */
+
+.top-bar {
+    -fx-background-color: #2A3087;
+    -fx-border-color: #1F2568;
+    -fx-border-width: 0 0 3 0;
+}
+
+/* Marco blanco donde se coloca el logotipo institucional */
+.logo-container {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 12;
+    -fx-padding: 5;
+}
+
+.logo-label {
+    -fx-font-size: 26px;
+    -fx-text-fill: #FFFFFF;
+}
+
+.title-label {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+.user-label {
+    -fx-font-size: 15px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #FFFFFF;
+}
+
+.logout-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #C7D4D8;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 22;
+    -fx-background-radius: 22;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-padding: 8 18 8 18;
+    -fx-cursor: hand;
+}
+
+.logout-button:hover {
+    -fx-background-color: #18A680;
+    -fx-border-color: #18A680;
+}
+
+.logout-button:pressed {
+    -fx-background-color: #969193;
+    -fx-border-color: #969193;
+}
+
+
+/* --------------------------------------------------------------- MENÚ LATERAL */
+
+.sidebar {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #C7D4D8;
+    -fx-border-width: 0 1 0 0;
+}
+
+.sidebar-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2A3087;
+}
+
+.sidebar-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #969193;
+}
+
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+    -fx-text-fill: #262628;
+    -fx-font-size: 16px;
+    -fx-padding: 12 16 12 16;
+    -fx-cursor: hand;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #C7D4D8;
+}
+
+.sidebar-button:pressed {
+    -fx-background-color: #969193;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Módulo abierto actualmente */
+.sidebar-button-activo {
+    -fx-background-color: #2A3087;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+}
+
+.sidebar-button-activo:hover {
+    -fx-background-color: #1F2568;
+}
+
+.sidebar-version {
+    -fx-font-size: 13px;
+    -fx-text-fill: #969193;
+}
+
+/* Texto legal: 12px según la guía */
+.sidebar-footer {
+    -fx-font-size: 12px;
+    -fx-text-fill: #969193;
+}
+
+
+/* -------------------------------------------------------------- ENCABEZADOS */
+
+.dashboard-title {
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2A3087;
+}
+
+.dashboard-description {
+    -fx-font-size: 16px;
+    -fx-text-fill: #969193;
+}
+
+.dashboard-status {
+    -fx-font-size: 13px;
+    -fx-text-fill: #969193;
+}
+
+.module-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #2A3087;
+}
+
+.module-subtitle {
+    -fx-font-size: 16px;
+    -fx-text-fill: #969193;
+}
+
+.section-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #262628;
+}
+
+
+/* ------------------------------------------------------ TARJETAS DE ESTADÍSTICA */
+
+.stats-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 14;
+    -fx-border-radius: 14;
+    -fx-border-color: #C7D4D8;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(38, 38, 40, 0.08), 12, 0, 0, 3);
+}
+
+.stats-card:hover {
+    -fx-border-color: #2A3087;
+}
+
+.stats-icon {
+    -fx-font-size: 22px;
+}
+
+.stats-value {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2A3087;
+}
+
+.stats-title {
+    -fx-font-size: 14px;
+    -fx-text-fill: #969193;
+}
+
+/* Alias heredados de utng1, para no romper vistas anteriores */
+.dashboard-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 14;
+    -fx-border-radius: 14;
+    -fx-border-color: #C7D4D8;
+    -fx-border-width: 1;
+}
+
+.card-icon  { -fx-font-size: 22px; }
+.card-value { -fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2A3087; }
+.card-title { -fx-font-size: 14px; -fx-text-fill: #969193; }
+
+
+/* --------------------------------------------------------------- TABLAS */
+
+.table-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 14;
+    -fx-border-radius: 14;
+    -fx-border-color: #C7D4D8;
+    -fx-border-width: 1;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(38, 38, 40, 0.06), 10, 0, 0, 2);
+}
+
+.table-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #262628;
+}
+
+.table-footer {
+    -fx-font-size: 13px;
+    -fx-text-fill: #969193;
+}
+
+.modern-table {
+    -fx-background-color: transparent;
+    -fx-border-color: #C7D4D8;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-font-size: 15px;
+}
+
+.modern-table .column-header-background {
+    -fx-background-color: #2A3087;
+    -fx-background-radius: 10 10 0 0;
+}
+
+.modern-table .column-header,
+.modern-table .filler {
+    -fx-background-color: transparent;
+    -fx-size: 44;
+}
+
+.modern-table .column-header .label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 10 0 10;
+}
+
+.modern-table .table-row-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent transparent #E6ECEE transparent;
+    -fx-cell-size: 42px;
+}
+
+.modern-table .table-row-cell:odd {
+    -fx-background-color: #FAFBFC;
+}
+
+.modern-table .table-row-cell:hover {
+    -fx-background-color: #C7D4D8;
+}
+
+.modern-table .table-row-cell:selected {
+    -fx-background-color: #2A3087;
+}
+
+.modern-table .table-row-cell:selected .text {
+    -fx-fill: #FFFFFF;
+}
+
+.modern-table .table-cell {
+    -fx-text-fill: #262628;
+    -fx-font-size: 15px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 10 0 10;
+    -fx-border-color: transparent;
+}
+
+.modern-table .placeholder .label {
+    -fx-text-fill: #969193;
+    -fx-font-size: 15px;
+}
+
+
+/* --------------------------------------------------------------- BOTONES
+   Estados según la guía:
+     normal      -> azul institucional
+     hover/foco  -> verde
+     presionado  -> gris
+     desactivado -> azul claro con texto gris
+   -------------------------------------------------------------------- */
+
+.primary-button {
+    -fx-background-color: #2A3087;
+    -fx-background-radius: 24;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+    -fx-padding: 10 22 10 22;
+    -fx-cursor: hand;
+}
+
+.primary-button:hover {
+    -fx-background-color: #18A680;
+}
+
+.primary-button:pressed {
+    -fx-background-color: #969193;
+}
+
+.primary-button:focused {
+    -fx-background-color: #18A680;
+    -fx-text-fill: #262628;
+    -fx-border-color: #2A3087;
+    -fx-border-width: 2;
+    -fx-border-radius: 24;
+}
+
+.primary-button:disabled {
+    -fx-background-color: #C7D4D8;
+    -fx-text-fill: #969193;
+    -fx-opacity: 1;
+}
+
+.secondary-button {
+    -fx-background-color: #C7D4D8;
+    -fx-background-radius: 24;
+    -fx-text-fill: #262628;
+    -fx-font-size: 16px;
+    -fx-font-weight: 500;
+    -fx-padding: 10 22 10 22;
+    -fx-cursor: hand;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #18A680;
+    -fx-text-fill: #FFFFFF;
+}
+
+.secondary-button:pressed {
+    -fx-background-color: #969193;
+    -fx-text-fill: #FFFFFF;
+}
+
+.secondary-button:focused {
+    -fx-border-color: #2A3087;
+    -fx-border-width: 2;
+    -fx-border-radius: 24;
+}
+
+.secondary-button:disabled {
+    -fx-background-color: #E6ECEE;
+    -fx-text-fill: #969193;
+    -fx-opacity: 1;
+}
+
+/* Enlace discreto: "+ Nuevo autor", "Sugerir código" */
+.btn-link {
+    -fx-background-color: transparent;
+    -fx-text-fill: #2A3087;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-underline: true;
+    -fx-padding: 4 4 4 4;
+    -fx-cursor: hand;
+}
+
+.btn-link:hover {
+    -fx-text-fill: #18A680;
+}
+
+/* Acción de cuidado: baja, extravío, condonación */
+.danger-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #969193;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 24;
+    -fx-background-radius: 24;
+    -fx-text-fill: #262628;
+    -fx-font-size: 16px;
+    -fx-padding: 10 22 10 22;
+    -fx-cursor: hand;
+}
+
+.danger-button:hover {
+    -fx-background-color: #969193;
+    -fx-text-fill: #FFFFFF;
+}
+
+.action-button {
+    -fx-background-color: #2A3087;
+    -fx-background-radius: 24;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+    -fx-padding: 10 22 10 22;
+}
+
+.action-button:hover { -fx-background-color: #18A680; }
+
+.top-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 15px;
+    -fx-cursor: hand;
+}
+
+.top-button:hover { -fx-text-fill: #18A680; }
+
+
+/* --------------------------------------------------------------- CAMPOS */
+
+.filtro-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #262628;
+}
+
+.search-field {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10;
+    -fx-border-color: #C7D4D8;
+    -fx-border-radius: 10;
+    -fx-border-width: 1.5;
+    -fx-font-size: 16px;
+    -fx-text-fill: #262628;
+    -fx-prompt-text-fill: #969193;
+    -fx-padding: 10 14 10 14;
+}
+
+.search-field:focused {
+    -fx-border-color: #18A680;
+    -fx-border-width: 2;
+}
+
+.toolbar-combo {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10;
+    -fx-border-color: #C7D4D8;
+    -fx-border-radius: 10;
+    -fx-border-width: 1.5;
+    -fx-font-size: 15px;
+    -fx-padding: 4 8 4 8;
+    -fx-cursor: hand;
+}
+
+.toolbar-combo:focused {
+    -fx-border-color: #18A680;
+    -fx-border-width: 2;
+}
+
+.toolbar-combo .list-cell {
+    -fx-text-fill: #262628;
+    -fx-font-size: 15px;
+    -fx-background-color: transparent;
+    -fx-padding: 6 8 6 8;
+}
+
+.toolbar-combo .list-view .list-cell:hover {
+    -fx-background-color: #C7D4D8;
+}
+
+.toolbar-combo .list-view .list-cell:selected {
+    -fx-background-color: #2A3087;
+    -fx-text-fill: #FFFFFF;
+}
+
+.toolbar-combo .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.toolbar-combo .arrow {
+    -fx-background-color: #2A3087;
+}
+
+.check-box {
+    -fx-font-size: 15px;
+    -fx-text-fill: #262628;
+    -fx-cursor: hand;
+}
+
+.check-box .box {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #969193;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-border-width: 1.5;
+}
+
+.check-box:selected .box {
+    -fx-background-color: #18A680;
+    -fx-border-color: #18A680;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #FFFFFF;
+}
+
+
+/* --------------------------------------------------------------- MÓDULOS */
+
+.dashboard,
+.books-module {
+    -fx-background-color: #F2F5F6;
+}
+
+
+/* --------------------------------------------------------------- DIÁLOGOS */
+
+.dialog-pane {
+    -fx-background-color: #FFFFFF;
+    -fx-font-family: "Archivo", "Telegraf", "Arial", sans-serif;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #2A3087;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane .content.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #262628;
+}
+
+.dialog-pane .button {
+    -fx-background-color: #2A3087;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 20;
+    -fx-font-size: 15px;
+    -fx-padding: 8 20 8 20;
+    -fx-cursor: hand;
+}
+
+.dialog-pane .button:hover {
+    -fx-background-color: #18A680;
+}
+
+
+/* ============================================================================
+   SELECTOR DE FECHAS Y GRÁFICAS
+   Agregado para el módulo de reportes. Los colores de las series salen de la
+   paleta institucional en el orden en que JavaFX asigna default-color0..3.
+   ============================================================================ */
+
+.date-picker {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10;
+    -fx-border-color: #C7D4D8;
+    -fx-border-radius: 10;
+    -fx-border-width: 1.5;
+    -fx-font-size: 15px;
+    -fx-cursor: hand;
+}
+
+.date-picker:focused {
+    -fx-border-color: #18A680;
+    -fx-border-width: 2;
+}
+
+.date-picker .text-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: #262628;
+    -fx-font-size: 15px;
+    -fx-padding: 8 10 8 10;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+.date-picker .arrow-button .arrow {
+    -fx-background-color: #2A3087;
+}
+
+/* Encabezado del calendario desplegable */
+.date-picker-popup > .month-year-pane {
+    -fx-background-color: #2A3087;
+    -fx-padding: 10;
+}
+
+.date-picker-popup > .month-year-pane .label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.date-picker-popup > .month-year-pane .button .left-arrow,
+.date-picker-popup > .month-year-pane .button .right-arrow {
+    -fx-background-color: #FFFFFF;
+}
+
+.date-picker-popup {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #C7D4D8;
+    -fx-effect: dropshadow(gaussian, rgba(38, 38, 40, 0.20), 16, 0, 0, 5);
+}
+
+.date-picker-popup > * > .day-name-cell {
+    -fx-text-fill: #969193;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.date-picker-popup > * > .day-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #262628;
+    -fx-font-size: 14px;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+}
+
+.date-picker-popup > * > .day-cell:hover {
+    -fx-background-color: #C7D4D8;
+}
+
+.date-picker-popup > * > .selected {
+    -fx-background-color: #2A3087;
+    -fx-text-fill: #FFFFFF;
+}
+
+.date-picker-popup > * > .today {
+    -fx-background-color: #18A680;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+}
+
+.date-picker-popup > * > .today:hover {
+    -fx-background-color: #12805F;
+}
+
+/* Días del mes anterior o siguiente */
+.date-picker-popup > * > .previous-month,
+.date-picker-popup > * > .next-month {
+    -fx-text-fill: #969193;
+}
+
+
+/* -------------------------------------------------------------- GRÁFICAS */
+
+.grafica {
+    -fx-background-color: transparent;
+    -fx-padding: 8;
+}
+
+.grafica .chart-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #262628;
+}
+
+.grafica .chart-plot-background {
+    -fx-background-color: #FAFBFC;
+}
+
+.grafica .chart-vertical-grid-lines,
+.grafica .chart-horizontal-grid-lines {
+    -fx-stroke: #E6ECEE;
+}
+
+.grafica .axis {
+    -fx-tick-label-fill: #969193;
+    -fx-tick-label-font-size: 12px;
+}
+
+.grafica .axis-label {
+    -fx-text-fill: #262628;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+}
+
+.grafica .chart-legend {
+    -fx-background-color: transparent;
+    -fx-text-fill: #262628;
+    -fx-font-size: 13px;
+}
+
+/* Serie 1: azul institucional | Serie 2: verde | Serie 3: gris */
+.grafica .default-color0.chart-series-line { -fx-stroke: #2A3087; -fx-stroke-width: 2.5; }
+.grafica .default-color1.chart-series-line { -fx-stroke: #18A680; -fx-stroke-width: 2.5; }
+.grafica .default-color2.chart-series-line { -fx-stroke: #969193; -fx-stroke-width: 2.5; }
+
+.grafica .default-color0.chart-line-symbol {
+    -fx-background-color: #2A3087, #FFFFFF;
+    -fx-background-radius: 6;
+    -fx-padding: 4;
+}
+
+.grafica .default-color1.chart-line-symbol {
+    -fx-background-color: #18A680, #FFFFFF;
+    -fx-background-radius: 6;
+    -fx-padding: 4;
+}
+
+.grafica .default-color0.chart-bar { -fx-bar-fill: #2A3087; }
+.grafica .default-color1.chart-bar { -fx-bar-fill: #18A680; }
+.grafica .default-color2.chart-bar { -fx-bar-fill: #969193; }
+
+.grafica .default-color0.chart-pie { -fx-pie-color: #2A3087; }
+.grafica .default-color1.chart-pie { -fx-pie-color: #18A680; }
+.grafica .default-color2.chart-pie { -fx-pie-color: #969193; }
+.grafica .default-color3.chart-pie { -fx-pie-color: #C7D4D8; }
+.grafica .default-color4.chart-pie { -fx-pie-color: #262628; }
+.grafica .default-color5.chart-pie { -fx-pie-color: #1F2568; }
+
+.grafica .chart-pie {
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 2;
+}
+
+.grafica .chart-pie-label {
+    -fx-fill: #262628;
+    -fx-font-size: 13px;
+}
+
+.grafica .chart-pie-label-line {
+    -fx-stroke: #969193;
+}
+
+/* Texto de ayuda bajo un campo */
+.texto-ayuda {
+    -fx-font-size: 12px;
+    -fx-text-fill: #969193;
+}
+
+/* Lista de selección múltiple (autores del material) */
+.list-view {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #C7D4D8;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-width: 1.5;
+}
+
+.list-view .list-cell {
+    -fx-font-size: 14px;
+    -fx-text-fill: #262628;
+    -fx-padding: 7 10 7 10;
+    -fx-cursor: hand;
+}
+
+.list-view .list-cell:filled:hover {
+    -fx-background-color: #C7D4D8;
+}
+
+.list-view .list-cell:filled:selected {
+    -fx-background-color: #2A3087;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Área de texto (justificación y respuesta de solicitudes) */
+.text-area {
+    -fx-background-color: transparent;
+    -fx-font-size: 15px;
+}
+
+.text-area .content {
+    -fx-background-color: #FFFFFF;
+}
+
+.text-area:focused {
+    -fx-border-color: #18A680;
+    -fx-border-width: 2;
+}
+
+
+/* ============================================================================
+   MÓDULOS CON PANEL PLEGABLE Y PAGINACIÓN
+   ============================================================================ */
+
+/* Divisor entre la tabla y el formulario lateral */
+.divisor-modulo {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.divisor-modulo > .split-pane-divider {
+    -fx-background-color: transparent;
+    -fx-padding: 0 5 0 5;
+}
+
+.divisor-modulo > .split-pane-divider:hover {
+    -fx-background-color: #C7D4D8;
+}
+
+/* Barra inferior de paginación */
+.barra-paginacion {
+    -fx-background-color: #FAFBFC;
+    -fx-background-radius: 10;
+    -fx-border-color: #E6ECEE;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-padding: 8 12 8 12;
+}
+
+/* Flechas de página: cuadradas y discretas, no compiten con las acciones */
+.btn-pagina {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 8;
+    -fx-border-color: #C7D4D8;
+    -fx-border-radius: 8;
+    -fx-border-width: 1.5;
+    -fx-text-fill: #2A3087;
+    -fx-font-size: 14px;
+    -fx-padding: 6 10 6 10;
+    -fx-cursor: hand;
+}
+
+.btn-pagina:hover {
+    -fx-background-color: #18A680;
+    -fx-border-color: #18A680;
+    -fx-text-fill: #FFFFFF;
+}
+
+.btn-pagina:disabled {
+    -fx-text-fill: #C7D4D8;
+    -fx-border-color: #E6ECEE;
+    -fx-opacity: 1;
+}
+/* ================================================================
+   BOTÓN EXPORTAR A EXCEL
+   ================================================================ */
+
+.excel-button {
+    -fx-background-color: #217346;
+    -fx-background-radius: 24;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+    -fx-padding: 10 22 10 22;
+    -fx-cursor: hand;
+}
+
+.excel-button:hover {
+    -fx-background-color: #21A366;
+}
+
+.excel-button:pressed {
+    -fx-background-color: #185C37;
+}
+
+.excel-button:focused {
+    -fx-background-color: #21A366;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #185C37;
+    -fx-border-width: 2;
+    -fx-border-radius: 24;
+}
+
+.excel-button:disabled {
+    -fx-background-color: #A9C9B5;
+    -fx-text-fill: #E8F1EB;
+    -fx-opacity: 1;
+}
+
+
+/* ============================================================================
+   PESTAÑAS DEL MÓDULO DE REPORTES
+   ============================================================================ */
+
+.tabs-modernas {
+    -fx-background-color: transparent;
+}
+
+.tabs-modernas > .tab-header-area > .tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.tabs-modernas > .tab-header-area {
+    -fx-padding: 0 0 4 0;
+}
+
+.tabs-modernas .tab {
+    -fx-background-color: #C7D4D8;
+    -fx-background-radius: 10 10 0 0;
+    -fx-padding: 9 22 9 22;
+    -fx-cursor: hand;
+}
+
+.tabs-modernas .tab:selected {
+    -fx-background-color: #2A3087;
+}
+
+/* Quita el recuadro de foco que JavaFX dibuja sobre la pestaña activa */
+.tabs-modernas .tab:selected .focus-indicator {
+    -fx-border-color: transparent;
+}
+
+.tabs-modernas .tab .tab-label {
+    -fx-text-fill: #262628;
+    -fx-font-size: 15px;
+    -fx-font-weight: 600;
+}
+
+.tabs-modernas .tab:selected .tab-label {
+    -fx-text-fill: #FFFFFF;
+}
+
+.tabs-modernas .tab:hover .tab-label {
+    -fx-text-fill: #2A3087;
+}
+
+.tabs-modernas .tab:selected:hover .tab-label {
+    -fx-text-fill: #FFFFFF;
+}
